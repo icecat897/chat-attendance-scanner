@@ -12,6 +12,7 @@ node_modules/
 uvicorn.log
 
 data/mappings.json
+成员.md
 图片/
 
 .DS_Store

@@ -62,7 +62,7 @@ http://127.0.0.1:8000
 
 ## 使用流程
 
-1. 准备 `成员.md`
+1. 准备 `成员.md`（可由 `成员模板.md` 复制得到）
 2. 打开网页并上传聊天长截图
 3. 输入本次请假人员
 4. 点击“开始分析”
@@ -95,6 +95,7 @@ http://127.0.0.1:8000
 - 带 `（组长）` 的成员会自动排除
 - 修改 `成员.md` 后，不需要重启服务
 - 如果网页已经打开，建议手动刷新一次页面再继续使用
+- 仓库默认不提交真实 `成员.md`，请先复制 `成员模板.md` 再填写你自己的名单
 
 ## 手机使用
 
@@ -146,7 +147,7 @@ https://xxxx-xxxx.trycloudflare.com
 - `requirements.txt`
 - `static/`
 - `scripts/debug_rapidocr.py`
-- `成员.md`
+- `成员模板.md`
 - `README.md`
 - `start.bat`
 - `start_public.bat`
@@ -157,6 +158,7 @@ https://xxxx-xxxx.trycloudflare.com
 - `data/mappings.json`
 - `uvicorn.log`
 - `__pycache__/`
+- `成员.md`
 
 ## 部署说明
 
