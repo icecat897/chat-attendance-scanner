@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>聊天图片签到统计</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero card">
+        <div>
+          <p class="eyebrow">Local Attendance Scanner</p>
+          <h1>聊天图片签到统计</h1>
+          <p class="hero-copy">
+            上传 QQ / 微信聊天长截图，自动识别哪些成员发过图片消息，并统计未出现人员。
+          </p>
+        </div>
+        <div class="hero-note">
+          <p>自动排除：</p>
+          <ul id="leaderList"></ul>
+        </div>
+      </section>
+
+      <section class="workspace-grid">
+        <section class="card form-card">
+          <h2>开始识别</h2>
+          <label class="field">
+            <span>聊天截图</span>
+            <input id="imageInput" type="file" accept="image/*" multiple />
+          </label>
+          <label class="field">
+            <span>请假人员</span>
+            <textarea
+              id="leaveNames"
+              rows="3"
+              placeholder="支持逗号、顿号、空格或换行分隔"
+            ></textarea>
+          </label>
+          <div class="hint-list">
+            <p>识别规则：</p>
+            <p>1. 仅统计聊天记录中“昵称 + 图片消息”对应的发送者。</p>
+            <p>2. 名字带“（组长）”的成员自动排除。</p>
+            <p>3. 昵称里只要包含姓名，例如“计科2401吴宇珂”，也会尝试自动匹配。</p>
+          </div>
+          <button id="analyzeButton" class="primary-button">开始分析</button>
+          <div id="progressBox" class="progress-box hidden"></div>
+        </section>
+
+        <section class="card result-card">
+          <div class="section-header">
+            <h2>统计结果</h2>
+            <span id="summaryBadge" class="badge">等待分析</span>
+          </div>
+          <div id="resultEmpty" class="empty-state">
+            选择截图后点击“开始分析”，结果会显示在这里。
+          </div>
+          <div id="resultContent" class="hidden">
+            <div class="stats-row">
+              <article class="stat-panel">
+                <span>应统计人数</span>
+                <strong id="activeCount">0</strong>
+              </article>
+              <article class="stat-panel success">
+                <span>已出现</span>
+                <strong id="presentCount">0</strong>
+              </article>
+              <article class="stat-panel danger">
+                <span>未出现</span>
+                <strong id="missingCount">0</strong>
+              </article>
+            </div>
+
+            <div class="columns">
+              <section>
+                <h3>未出现人员</h3>
+                <div id="missingList" class="tag-list"></div>
+              </section>
+              <section>
+                <h3>已出现人员</h3>
+                <div id="presentList" class="tag-list"></div>
+              </section>
+            </div>
+
+            <section>
+              <h3>已排除人员</h3>
+              <div id="excludedList" class="tag-list muted"></div>
+            </section>
+
+            <section id="mappingPanel" class="mapping-panel hidden">
+              <div class="section-header">
+                <h3>待确认昵称</h3>
+                <span class="badge warning">需要人工映射</span>
+              </div>
+              <p class="subtle">
+                这些昵称没有被稳定匹配到成员名单。你可以在这里手动映射，系统会记住，下次不再重复询问。
+              </p>
+              <div id="mappingList" class="mapping-list"></div>
+            </section>
+
+            <details class="card-lite">
+              <summary>查看识别明细</summary>
+              <div id="detailsList" class="detail-list"></div>
+            </details>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+fastapi>=0.116,<1.0
+uvicorn[standard]>=0.35,<1.0
+python-multipart>=0.0.20,<1.0
+rapidocr_onnxruntime>=1.2.3,<2.0
+opencv-python>=4.13,<5.0
+numpy>=2.4,<3.0
